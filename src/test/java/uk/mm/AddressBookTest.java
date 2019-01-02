@@ -35,8 +35,8 @@ public class AddressBookTest {
     }
 
     @Test
-    public void testDaysBetweenPersons() {
-        Optional<Long> daysBetween = addressBook.countDaysBetween("Bill McKnight", "Paul Robinson");
+    public void testDaysBetweenPersons_shouldIgnoreCase() {
+        Optional<Long> daysBetween = addressBook.countDaysBetween("BiLL mcKNIGHT", "paul robinson");
         assertEquals(daysBetween, Optional.of(2862L));
     }
 

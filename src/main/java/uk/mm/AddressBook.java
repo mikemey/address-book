@@ -42,7 +42,7 @@ public class AddressBook {
 
     private Optional<AddressBookEntry> findPerson(String name) {
         return addresses.stream()
-                .filter(person -> person.getName().equals(name))
+                .filter(person -> person.getName().equalsIgnoreCase(name))
                 .findFirst();
     }
 }
