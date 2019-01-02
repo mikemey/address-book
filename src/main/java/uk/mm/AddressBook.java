@@ -2,10 +2,11 @@ package uk.mm;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class AddressBook {
     private static List<AddressBookEntry> addresses;
@@ -26,14 +27,17 @@ public class AddressBook {
                 .map(AddressBookEntry::getName);
     }
 
-    public Long countDaysBetween(String nameA, String nameB) {
+    public Optional<Long> countDaysBetween(String nameA, String nameB) {
         Optional<AddressBookEntry> personA = findPerson(nameA);
         Optional<AddressBookEntry> personB = findPerson(nameB);
 
-        LocalDate dobA = personA.get().getDob();
-        LocalDate dobB = personB.get().getDob();
+        if (personA.isPresent() && personB.isPresent()) {
+            LocalDate dobA = personA.get().getDob();
+            LocalDate dobB = personB.get().getDob();
 
-        return ChronoUnit.DAYS.between(dobA, dobB);
+            return Optional.of(DAYS.between(dobA, dobB));
+        }
+        return Optional.empty();
     }
 
     private Optional<AddressBookEntry> findPerson(String name) {
