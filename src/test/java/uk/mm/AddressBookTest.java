@@ -16,7 +16,7 @@ public class AddressBookTest {
 
     @Test
     public void testCountMales() {
-        assertEquals(addressBook.countSex(AddressBook.SEX.MALE), 3);
+        assertEquals(addressBook.countSex(AddressBookEntry.SEX.MALE), 3);
     }
 
 //    @Test
