@@ -8,8 +8,10 @@
     <artifactId>address-book</artifactId>
     <version>1.0-SNAPSHOT</version>
     <properties>
+        <main.class>uk.mm.AddressBookMain</main.class>
         <testng.version>6.14.3</testng.version>
         <guava.version>27.0.1-jre</guava.version>
+        <apache-commons.version>3.8.1</apache-commons.version>
     </properties>
     <dependencies>
         <dependency>
@@ -23,6 +25,11 @@
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${apache-commons.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -33,6 +40,21 @@
                 <configuration>
                     <source>11</source>
                     <target>11</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.6.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>java</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <mainClass>${main.class}</mainClass>
                 </configuration>
             </plugin>
         </plugins>
