@@ -34,7 +34,9 @@ public class AddressBookTest {
         assertEquals(emptyAddressBook.getOldestPersonName(), Optional.empty());
     }
 
-//    @Test
-//    public void testDaysBetweenPersons() {
-//    }
+    @Test
+    public void testDaysBetweenPersons() {
+        long daysBetween = addressBook.countDaysBetween("Bill McKnight", "Paul Robinson");
+        assertEquals(daysBetween, 2862L);
+    }
 }
